@@ -20,5 +20,5 @@ plt.grid()
 plt.legend()
 
 # Guardar la gráfica
-plt.savefig('graph.png')  # Guarda la gráfica en un archivo PNG
+plt.savefig('output/graph.png')  # Guarda la gráfica en un archivo PNG
 plt.close()  # Cierra la figura
