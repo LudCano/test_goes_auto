@@ -191,7 +191,7 @@ for file in tqdm(files_to_dwnld[60:70], desc='Downloading'):
         if not os.path.exists(fpath):
             fs.get(file, fpath)
     with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
-        subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, file)
+        subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, fname)
     if os.path.exists(fpath) and flush_orig:
         os.remove(fpath)
     else:
