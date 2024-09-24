@@ -12,7 +12,7 @@
 date0      = '2024-09-23'  #fecha inicial YYYY-MM-DD
 datef      = '2024-09-23'  #fecha final YYYY-MM-DD
 n_hour     = 6             #número de datos por hora, 1 (horario), 2(media hora), 3(20min), 6(todos)
-outdir     = '.'   #carpeta donde descargar los datos, se creará si no existe
+outdir     = 'descarga_test'   #carpeta donde descargar los datos, se creará si no existe
 trim_bf    = False         #Cortar en la nube? Puede tomar más tiempo (True/False)
 flush_orig = True       #Eliminar los archivos originales (sin cortar)
 
@@ -190,14 +190,7 @@ for file in tqdm(files_to_dwnld[58:60], desc='Downloading'):
     if not os.path.exists(trimmedpath):
         if not os.path.exists(fpath):
             fs.get(file, fpath)
-            print(os.listdir())
-        while not os.path.isfile(fpath):
-            print("Esperando a que el archivo se descargue...")
-            time.sleep(2)
-        with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
-            subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, fname)
-        if os.path.exists(fpath) and flush_orig:
-            os.remove(fpath)
+
     else:
         print(file.split('/')[-1], 'exists')
 
