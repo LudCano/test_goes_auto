@@ -167,7 +167,7 @@ def subset_abi_file(ds, upper_left_lat, upper_left_lon, lower_right_lat, lower_r
     # Silence warning from xarray about saving x, y with no fill value
     with warnings.catch_warnings():
       warnings.simplefilter('ignore')
-      ds_sub.to_netcdf((abi_path / save_name).as_posix(), engine='netcdf4')
+      ds_sub.to_netcdf((abi_path / save_name).as_posix(), engine='h5netcdf')
 
 
 if not os.path.exists(outdir):
