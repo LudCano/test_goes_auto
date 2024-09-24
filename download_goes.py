@@ -167,7 +167,7 @@ def subset_abi_file(ds, upper_left_lat, upper_left_lon, lower_right_lat, lower_r
     # Silence warning from xarray about saving x, y with no fill value
     with warnings.catch_warnings():
       warnings.simplefilter('ignore')
-      ds_sub.to_netcdf((abi_path / save_name).as_posix(), engine='netcdf4')
+      ds_sub.to_netcdf((abi_path / save_name).as_posix(), engine='h5netcdf')
 
 
 if not os.path.exists(outdir):
@@ -180,7 +180,7 @@ if not os.path.exists(outdir):
 # Loop through list of ABI files on NODD
 # Open each file remotely, subset variables & save as a new .nc file
 orig_files_paths = []
-for file in tqdm(files_to_dwnld[58:60], desc='Downloading'):
+for file in tqdm(files_to_dwnld[60:70], desc='Downloading'):
     fname = file.split('/')[-1]
     subname = "sub_" + fname
     #print(file.split('/')[-1])  # Print the ABI file name
@@ -190,7 +190,10 @@ for file in tqdm(files_to_dwnld[58:60], desc='Downloading'):
     if not os.path.exists(trimmedpath):
         if not os.path.exists(fpath):
             fs.get(file, fpath)
-
+    with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
+        subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, file)
+    if os.path.exists(fpath) and flush_orig:
+        os.remove(fpath)
     else:
         print(file.split('/')[-1], 'exists')
 
