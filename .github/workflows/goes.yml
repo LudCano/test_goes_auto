@@ -26,11 +26,6 @@ jobs:
       - name: Run download script
         run: |
           python download_goes.py  # Ejecuta tu script
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "generadoauto"
-          git push
 
       - name: Run trimming script
         run: |
