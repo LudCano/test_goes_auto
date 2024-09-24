@@ -25,7 +25,9 @@ jobs:
 
       - name: Run Python script
         run: python script.py  # Ejecuta tu script
-
+        
+      - name: List files
+        run: ls -la
 #      - name: Prepare for deployment
 #        run: |
 #          mkdir -p output  # Crea un directorio de salida
