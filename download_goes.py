@@ -12,7 +12,7 @@
 date0      = '2024-09-23'  #fecha inicial YYYY-MM-DD
 datef      = '2024-09-23'  #fecha final YYYY-MM-DD
 n_hour     = 6             #número de datos por hora, 1 (horario), 2(media hora), 3(20min), 6(todos)
-outdir     = 'descarga_23sept2'   #carpeta donde descargar los datos, se creará si no existe
+outdir     = 'descarga_test'   #carpeta donde descargar los datos, se creará si no existe
 trim_bf    = False         #Cortar en la nube? Puede tomar más tiempo (True/False)
 flush_orig = True       #Eliminar los archivos originales (sin cortar)
 
@@ -180,7 +180,7 @@ if not os.path.exists(outdir):
 # Loop through list of ABI files on NODD
 # Open each file remotely, subset variables & save as a new .nc file
 orig_files_paths = []
-for file in tqdm(files_to_dwnld[58:74], desc='Downloading'):
+for file in tqdm(files_to_dwnld[58:59], desc='Downloading'):
     fname = file.split('/')[-1]
     subname = "sub_" + fname
     #print(file.split('/')[-1])  # Print the ABI file name
