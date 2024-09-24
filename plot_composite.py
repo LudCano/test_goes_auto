@@ -147,8 +147,5 @@ image_title = 'GOES-16/ABI Aerosol Optical Depth  23 Sep 2024  ' + gen_hour(star
 # Add plot title
 plt.title(image_title, pad=8, size=8, weight='bold')
 
-plt.figure()
-plt.hist(aods.flatten('C'))
 
-plt.show()
-#fig.savefig('composite_23sep.png', dpi = 500)
+fig.savefig('composite.png', dpi = 500)
