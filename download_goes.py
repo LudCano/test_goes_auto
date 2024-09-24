@@ -9,10 +9,8 @@
 ######################################################
 ###########   PARÁMETROS DE DESCARGA   ###############
 ######################################################
-date0      = '2024-09-23'  #fecha inicial YYYY-MM-DD
-datef      = '2024-09-23'  #fecha final YYYY-MM-DD
 n_hour     = 6             #número de datos por hora, 1 (horario), 2(media hora), 3(20min), 6(todos)
-outdir     = 'descarga_test'   #carpeta donde descargar los datos, se creará si no existe
+outdir     = 'descarga_composite'   #carpeta donde descargar los datos, se creará si no existe
 trim_bf    = False         #Cortar en la nube? Puede tomar más tiempo (True/False)
 flush_orig = True       #Eliminar los archivos originales (sin cortar)
 
@@ -43,6 +41,11 @@ from PIL import Image        # manejo de imágenes
 import pandas as pd          # tablas (y fechas)
 from tqdm import tqdm        # barra de progreso
 import h5netcdf
+
+
+today = dt.datetime.now().date().strftime('%Y-%m-%d')
+date0 = today
+datef = today
 
 ######################################################
 #######   CONEXIÓN A AMAZON WEB SERVICES   ###########
@@ -180,7 +183,7 @@ if not os.path.exists(outdir):
 # Loop through list of ABI files on NODD
 # Open each file remotely, subset variables & save as a new .nc file
 orig_files_paths = []
-for file in tqdm(files_to_dwnld[60:70], desc='Downloading'):
+for file in tqdm(files_to_dwnld[58:74], desc='Downloading'):
     fname = file.split('/')[-1]
     subname = "sub_" + fname
     #print(file.split('/')[-1])  # Print the ABI file name
@@ -198,3 +201,9 @@ for file in tqdm(files_to_dwnld[60:70], desc='Downloading'):
         print(file.split('/')[-1], 'exists')
 
 print('Done!')
+
+
+
+
+
+
