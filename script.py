@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import os
 print('ESTO ESTA CORRIENDO AHORA WAAAAAA')
 
 
@@ -22,3 +22,6 @@ plt.legend()
 # Guardar la gráfica
 plt.savefig('output/graph.png')  # Guarda la gráfica en un archivo PNG
 plt.close()  # Cierra la figura
+
+print("Directorio actual:", os.getcwd())
+print("Archivos en el directorio:", os.listdir())
