@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+print('ESTO ESTA CORRIENDO AHORA WAAAAAA')
+
+
 # Datos para la gráfica
 x = np.linspace(-10, 10, 100)  # 100 puntos entre -10 y 10
 y = x ** 2  # y = x^2
