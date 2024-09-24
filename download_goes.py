@@ -42,7 +42,7 @@ import numpy as np           # librería numérica
 from PIL import Image        # manejo de imágenes
 import pandas as pd          # tablas (y fechas)
 from tqdm import tqdm        # barra de progreso
-
+import h5netcdf
 
 ######################################################
 #######   CONEXIÓN A AMAZON WEB SERVICES   ###########
