@@ -184,7 +184,7 @@ lst_orig_files = os.listdir(outdir)
 for file in tqdm(lst_orig_files, desc='Trimming'):
     fpath = os.path.join(outdir,file)    
     with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
-        subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, fname)
+        subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, file)
     if os.path.exists(fpath) and flush_orig:
         os.remove(fpath)
 
