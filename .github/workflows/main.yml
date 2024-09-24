@@ -1,0 +1,38 @@
+name: Schedule Python Script
+
+on:
+  schedule:
+    - cron: '0 15 * * *'  # Ejecuta todos los días a las 15:00 UTC
+
+jobs:
+  run_python_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Especifica la versión de Python que necesitas
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Asegúrate de tener un requirements.txt
+
+      - name: Run Python script
+        run: python script.py  # Ejecuta tu script
+
+      - name: Prepare for deployment
+        run: |
+          mkdir -p output  # Crea un directorio de salida
+          mv graph.png output/graph.png  # Mueve tu gráfica al directorio de salida
+
+#      - name: Deploy to GitHub Pages
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./output  # Publica solo el directorio de salida que contiene la gráfica
+#          publish_branch: gh-pages  # Asegúrate de que tienes una rama gh-pages
