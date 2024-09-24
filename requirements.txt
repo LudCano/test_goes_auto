@@ -5,3 +5,4 @@ xarray
 tqdm
 pandas
 pillow
+h5netcdf
