@@ -180,7 +180,7 @@ if not os.path.exists(outdir):
 # Loop through list of ABI files on NODD
 # Open each file remotely, subset variables & save as a new .nc file
 orig_files_paths = []
-for file in tqdm(files_to_dwnld[58:59], desc='Downloading'):
+for file in tqdm(files_to_dwnld[58:60], desc='Downloading'):
     fname = file.split('/')[-1]
     subname = "sub_" + fname
     #print(file.split('/')[-1])  # Print the ABI file name
@@ -190,6 +190,7 @@ for file in tqdm(files_to_dwnld[58:59], desc='Downloading'):
     if not os.path.exists(trimmedpath):
         if not os.path.exists(fpath):
             fs.get(file, fpath)
+            print('downloaded!')
         with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
             subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, fname)
         if os.path.exists(fpath) and flush_orig:
