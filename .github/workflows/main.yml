@@ -3,6 +3,7 @@ name: Schedule Python Script
 on:
   schedule:
     - cron: '5 18 * * *'  # Ejecuta todos los días a las 15:00 UTC
+  workflow_dispatch:
 
 jobs:
   run_python_script:
