@@ -191,10 +191,13 @@ for file in tqdm(files_to_dwnld[58:60], desc='Downloading'):
         if not os.path.exists(fpath):
             fs.get(file, fpath)
             print(os.listdir())
-        #with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
-        #    subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, fname)
-        #if os.path.exists(fpath) and flush_orig:
-        #    os.remove(fpath)
+        while not os.path.isfile(fpath):
+            print("Esperando a que el archivo se descargue...")
+            time.sleep(2)
+        with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
+            subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, fname)
+        if os.path.exists(fpath) and flush_orig:
+            os.remove(fpath)
     else:
         print(file.split('/')[-1], 'exists')
 
