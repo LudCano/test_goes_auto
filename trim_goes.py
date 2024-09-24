@@ -181,8 +181,10 @@ if not os.path.exists(outdir):
 # Open each file remotely, subset variables & save as a new .nc file
 orig_files_paths = []
 lst_orig_files = os.listdir(outdir)
+print(lst_orig_files)
 for file in tqdm(lst_orig_files, desc='Trimming'):
     fpath = os.path.join(outdir,file)    
+    print(fpath)
     with xr.open_dataset(fpath, engine = 'h5netcdf') as ds:
         subset_abi_file(ds, upper_left_latitude, upper_left_longitude,lower_right_latitude, lower_right_longitude, file)
     if os.path.exists(fpath) and flush_orig:
