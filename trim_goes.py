@@ -12,7 +12,7 @@
 date0      = '2024-09-23'  #fecha inicial YYYY-MM-DD
 datef      = '2024-09-23'  #fecha final YYYY-MM-DD
 n_hour     = 6             #número de datos por hora, 1 (horario), 2(media hora), 3(20min), 6(todos)
-outdir     = '.'   #carpeta donde descargar los datos, se creará si no existe
+outdir     = 'descarga_test'   #carpeta donde descargar los datos, se creará si no existe
 trim_bf    = False         #Cortar en la nube? Puede tomar más tiempo (True/False)
 flush_orig = True       #Eliminar los archivos originales (sin cortar)
 
