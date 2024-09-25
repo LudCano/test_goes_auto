@@ -150,7 +150,7 @@ image_title = 'GOES-16/ABI Aerosol Optical Depth  {todaytitle}  ' + gen_hour(sta
 plt.title(image_title, pad=8, size=8, weight='bold')
 
 fig.savefig('composite.png', dpi = 500)
-for f in dir_data:
+for f in os.listdir(dir_data):
     pth = os.path.join(dir_data, f)
     os.remove(pth)
 print('All files were removed')
