@@ -143,9 +143,13 @@ cb.ax.set_xticklabels(['0', '1','2','3','4'])
 def gen_hour(x):
     stri = x[0:2]  + ':' + x[2:]
     return stri
-image_title = 'GOES-16/ABI Aerosol Optical Depth  23 Sep 2024  ' + gen_hour(start) + '-' + gen_hour(end) +' UTC Composite'
+todaytitle = dt.datetime.now().date().strftime('%d %b %Y')
+image_title = 'GOES-16/ABI Aerosol Optical Depth  {todaytitle}  ' + gen_hour(start) + '-' + gen_hour(end) +' UTC Composite'
 # Add plot title
 plt.title(image_title, pad=8, size=8, weight='bold')
 
-
 fig.savefig('composite.png', dpi = 500)
+for f in dir_data:
+    pth = os.path.join(dir_data, f)
+    os.remove(pth)
+print('All files were removed')
