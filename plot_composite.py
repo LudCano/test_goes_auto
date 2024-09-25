@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import xarray as xr          # manejo de xarrays
 import numpy as np
-
+import datetime as dt
 # LIBRERÍAS PARA MAPAS Y GEOGRAFÍA
 from cartopy import crs as ccrs
 import cartopy.feature as cfeature
