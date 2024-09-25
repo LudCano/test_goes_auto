@@ -145,7 +145,7 @@ def gen_hour(x):
     return stri
 todaytitle = dt.datetime.now() + dt.timedelta(hours = -5)
 todaytitle = todaytitle.date().strftime('%d %b %Y')
-image_title = 'GOES-16/ABI Aerosol Optical Depth  {todaytitle}  ' + gen_hour(start) + '-' + gen_hour(end) +' UTC Composite'
+image_title = f'GOES-16/ABI Aerosol Optical Depth  {todaytitle}  ' + gen_hour(start) + '-' + gen_hour(end) +' UTC Composite'
 # Add plot title
 plt.title(image_title, pad=8, size=8, weight='bold')
 
