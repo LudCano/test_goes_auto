@@ -45,6 +45,7 @@ import h5netcdf
 
 today = dt.datetime.now() + dt.timedelta(hours = -5)
 today = today.date().strftime('%Y-%m-%d')
+print('TODAY IS' ,today)
 date0 = today
 datef = today
 
