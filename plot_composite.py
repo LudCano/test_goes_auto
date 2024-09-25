@@ -145,11 +145,12 @@ def gen_hour(x):
     return stri
 todaytitle = dt.datetime.now() + dt.timedelta(hours = -5)
 todaytitle = todaytitle.date().strftime('%d %b %Y')
+forfname = todaytitle.date().strftime('%d%b')
 image_title = f'GOES-16/ABI Aerosol Optical Depth  {todaytitle}  ' + gen_hour(start) + '-' + gen_hour(end) +' UTC Composite'
 # Add plot title
 plt.title(image_title, pad=8, size=8, weight='bold')
 
-fig.savefig('composite.png', dpi = 500)
+fig.savefig(f'composite{forfname}.png', dpi = 500)
 for f in os.listdir(dir_data):
     pth = os.path.join(dir_data, f)
     os.remove(pth)
