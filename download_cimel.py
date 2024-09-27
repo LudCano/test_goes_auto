@@ -31,12 +31,12 @@ colors = ['g','b','r']
 
 print('Downloading data...')
 
-# for instrument in instruments:
-#     req = f'wget --no-check-certificate  -q  -O cimel_{instrument}.csv "https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site={instrument}&year={y0}&month={m0}&day={d0}&year2={yf}&month2={mf}&day2={df}&AOD15=1&AVG=10&if_no_html=1"'
-#     os.system(req)
-#     print(f'cimel_{instrument}.csv DOWNLOADED')
+for instrument in instruments:
+    req = f'wget --no-check-certificate  -q  -O cimel_{instrument}.csv "https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site={instrument}&year={y0}&month={m0}&day={d0}&year2={yf}&month2={mf}&day2={df}&AOD15=1&AVG=10&if_no_html=1"'
+    os.system(req)
+    print(f'cimel_{instrument}.csv DOWNLOADED')
 
-# fnames = [f'cimel_{i}.csv' for i in instruments]
+fnames = [f'cimel_{i}.csv' for i in instruments]
 
 
 def proc_csv(ifile):
@@ -94,5 +94,5 @@ todayformatted = dt.datetime.strftime(today, '%Y-%m-%d %H:%M UTC')
 ax.set_title(f'AOD last {days_to_dwnload} days (last update {todayformatted})', fontsize = 10)
 fig.savefig('aod440.png', dpi = 120)
 
-plt.show()
-# for f in fnames: os.remove(f)
+
+for f in fnames: os.remove(f)
