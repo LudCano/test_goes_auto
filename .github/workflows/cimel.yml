@@ -30,6 +30,4 @@ jobs:
         git add .
         git commit -m "generadoauto"
         git push      
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .
-        publish_branch: main  # O la rama que uses para GitHub Pages
+
