@@ -30,12 +30,6 @@ jobs:
         git add .
         git commit -m "generadoauto"
         git push      
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: .
         publish_branch: main  # O la rama que uses para GitHub Pages
