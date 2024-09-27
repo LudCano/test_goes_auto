@@ -3,9 +3,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import scienceplots
 import os
-plt.style.use(['science','nature'])
 
 ## Where to find documentation about web requests to aeronet
 ## https://aeronet.gsfc.nasa.gov/print_web_data_help_v3_new.html
@@ -18,14 +16,6 @@ today = dt.datetime.now()
 date_start = (today + dt.timedelta(days = -days_to_dwnload)).strftime('%Y-%m-%d')
 date_end = today.strftime('%Y-%m-%d')
 
-
-# get_value  = 'twodayaverage'    #'onlynoon','dayaverage','twodayaverage'
-# flgreplace = False         #replace dwnld_file if already exists
-# date_start = '2024-08-10'
-# date_end   = '2024-09-18'
-# cols_to_get= ['AOD_500nm','Ozone(Dobson)']
-# cols_in_tab= ['tauaer','o3col'] #in format for TUV
-# instrument = 'Mount_Chacaltaya' #Mount_Chacaltaya #La_Paz
 
 def get_date_info(d_str):
     d = dt.datetime.strptime(d_str, '%Y-%m-%d')
@@ -41,12 +31,12 @@ colors = ['g','b','r']
 
 print('Downloading data...')
 
-for instrument in instruments:
-    req = f'wget --no-check-certificate  -q  -O cimel_{instrument}.csv "https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site={instrument}&year={y0}&month={m0}&day={d0}&year2={yf}&month2={mf}&day2={df}&AOD15=1&AVG=10&if_no_html=1"'
-    os.system(req)
-    print(f'cimel_{instrument}.csv DOWNLOADED')
+# for instrument in instruments:
+#     req = f'wget --no-check-certificate  -q  -O cimel_{instrument}.csv "https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site={instrument}&year={y0}&month={m0}&day={d0}&year2={yf}&month2={mf}&day2={df}&AOD15=1&AVG=10&if_no_html=1"'
+#     os.system(req)
+#     print(f'cimel_{instrument}.csv DOWNLOADED')
 
-fnames = [f'cimel_{i}.csv' for i in instruments]
+# fnames = [f'cimel_{i}.csv' for i in instruments]
 
 
 def proc_csv(ifile):
@@ -70,8 +60,8 @@ def plot_aod440(ax, dfs,places, colors):
 
 fig, ax = plt.subplots(figsize=(7,3.5), dpi = 200)
 plot_aod500(ax, dfs, codenames, colors)
-fig.subplots_adjust(right=0.81)
-fig.legend(loc = 'center right')
+fig.subplots_adjust(right=0.81, bottom = 0.2)
+fig.legend(loc = 'center right', fontsize = 6)
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_minor_formatter(mdates.DateFormatter('%d'))
@@ -89,8 +79,8 @@ fig.savefig('aod500.png', dpi = 120)
 
 fig, ax = plt.subplots(figsize=(7,3.5), dpi = 200)
 plot_aod440(ax, dfs, codenames, colors)
-fig.subplots_adjust(right=0.81)
-fig.legend(loc = 'center right')
+fig.subplots_adjust(right=0.81, bottom = 0.2)
+fig.legend(loc = 'center right', fontsize = 6)
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_minor_formatter(mdates.DateFormatter('%d'))
@@ -104,5 +94,5 @@ todayformatted = dt.datetime.strftime(today, '%Y-%m-%d %H:%M UTC')
 ax.set_title(f'AOD last {days_to_dwnload} days (last update {todayformatted})', fontsize = 10)
 fig.savefig('aod440.png', dpi = 120)
 
-
-for f in fnames: os.remove(f)
+plt.show()
+# for f in fnames: os.remove(f)
