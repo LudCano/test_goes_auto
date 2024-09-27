@@ -8,3 +8,4 @@ pillow
 h5netcdf
 netCDF4
 cartopy
+SciencePlots
