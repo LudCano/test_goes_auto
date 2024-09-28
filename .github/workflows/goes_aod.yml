@@ -3,7 +3,7 @@ name: Goes download
 on:
   schedule:
     - cron: '0 15 * * *'  # Ejecuta todos los días a las 15:00 UTC
-  #workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   run_python_script:
