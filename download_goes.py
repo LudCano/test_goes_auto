@@ -91,6 +91,7 @@ for day in lst_dates:
     d = day.day
     # Obteniendo el dia del año 
     julian_day = dt.datetime(y, m, d).strftime('%j')
+    print("JULIAN DAY: ----",julian_day)
     for h in range(0,15):
         data_path = bucket + '/' + product + '/'  + str(y) + '/' + julian_day + '/' + str(h).zfill(2)
         fils = sorted(fs.ls(data_path))
